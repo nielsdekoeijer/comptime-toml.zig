@@ -48,7 +48,6 @@ fn tryParseInteger(comptime tokens: []const lex.Token) ?i32 {
         };
     }
 
-
     return null;
 }
 
@@ -57,21 +56,21 @@ fn parseKeyValue(comptime tokens: []const lex.Token) std.builtin.Type.StructFiel
     var name: [:0]const u8 = undefined;
 
     // ensure correct token type
-    if(isValidKey(tokens[0].token)) {
+    if (isValidKey(tokens[0].token)) {
         @compileError("expected QuotedString or UnquotedString token");
-    } 
+    }
 
     // check if content present
-    if(tokens[0].content) |val| {
+    if (tokens[0].content) |val| {
         name = utils.comptimeNullTerminate(val);
     } else {
         @compileError("expected content to be present");
     }
 
     // ensure separator
-    if(tokens[1].token != lex.Grammer.Equals) {
+    if (tokens[1].token != lex.Grammer.Equals) {
         @compileError("expected Equals token");
-    } 
+    }
 
     // parse type
     if (tryParseBoolean(tokens[2..])) |value| {
@@ -144,7 +143,7 @@ pub fn Parse(comptime tokens: []const lex.Token) type {
                     if (offset) |val| {
                         i += val;
                     } else {
-                        @compileError("expected NewLine token following key-value pair"); 
+                        @compileError("expected NewLine token following key-value pair");
                     }
                 },
                 else => {},

@@ -16,7 +16,9 @@ pub fn comptimeLog(comptime message: []const u8, comptime format: anytype) void 
 
 pub fn comptimeNullTerminate(comptime arr: []const u8) [:0]const u8 {
     var out: [arr.len + 1]u8 = undefined;
-    for (0..arr.len) |i| { out[i] = arr[i]; }
+    for (0..arr.len) |i| {
+        out[i] = arr[i];
+    }
     out[arr.len] = std.ascii.control_code.nul;
     return @ptrCast(&out);
 }

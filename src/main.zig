@@ -6,9 +6,12 @@ pub fn main() !void {
     const Config: type = toml.Read(@embedFile("test.toml"));
     const config: Config = Config{};
 
-    std.debug.print("{any}\n", .{config.version});
-    std.debug.print("{any}\n", .{config.title});
-    std.debug.print("{any}\n", .{config.enabled});
-    std.debug.print("{any}\n", .{config.money});
-    std.debug.print("{any}\n", .{config.poney});
+    const gpa = std.heap.page_allocator;
+    var arena = std.heap.ArenaAllocator.init(gpa);
+    var out = std.ArrayList(u8).init(arena.allocator());
+    std.json.stringify(config, .{}, out.writer()) catch |err| {
+        std.debug.print("{any}", .{err});
+    };
+
+    std.debug.print("{s}\n", .{out.items});
 }

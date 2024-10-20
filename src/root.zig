@@ -22,3 +22,12 @@ pub fn Read(comptime file: []const u8) type {
         return parse.Parse(lexed);
     }
 }
+
+test {
+    // TODO This isnt gonna scale:
+    // TODO [ ] write some code that can read the json 
+    // TODO [ ] parse the json to something that can autogen tests
+    const inp = Read(@embedFile("tests/valid/bool/bool.toml")){};
+    try std.testing.expect(inp.f == false);
+    try std.testing.expect(inp.t == true);
+}
