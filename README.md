@@ -1,77 +1,97 @@
-Here's a clean and organized list of tokens you can lex for your TOML lexer:
+# TODO Features:
+- [ ] Table
+- [ ] ArrayTable
+- [ ] DottedKey
 
----
+# Structure of TOML
 
-### **TOML Lexer Tokens**
-
-#### **1. Whitespace and Newlines**
-- **Whitespace (`WS`)**: Space and tab characters.
-- **Newline (`NEWLINE`)**: Line feed (`\n`) and carriage return + line feed (`\r\n`).
-
-#### **2. Comments**
-- **Comment (`COMMENT`)**: Lines starting with `#`.
-
-#### **3. Identifiers (Keys)**
-- **Unquoted Key (`UNQUOTED_KEY`)**: Alphanumeric characters, underscores, and hyphens.
-- **Quoted Key (`QUOTED_KEY`)**: Keys enclosed in basic or literal strings.
-- **Dotted Key Separator (`DOT`)**: The dot `.` used in dotted keys.
-
-#### **4. Key-Value Separator**
-- **Equal Sign (`EQUALS`)**: The `=` symbol.
-
-#### **5. Strings**
-- **Basic String (`BASIC_STRING`)**: Enclosed in double quotes (`"`), allowing escape sequences.
-- **Multiline Basic String (`ML_BASIC_STRING`)**: Enclosed in triple double quotes (`"""`).
-- **Literal String (`LITERAL_STRING`)**: Enclosed in single quotes (`'`), no escape sequences.
-- **Multiline Literal String (`ML_LITERAL_STRING`)**: Enclosed in triple single quotes (`'''`).
-
-#### **6. Numbers**
-- **Integer (`INTEGER`)**: Decimal, hexadecimal, octal, and binary integers.
-- **Float (`FLOAT`)**: Decimal numbers with fractional parts and/or exponents.
-- **Special Float (`SPECIAL_FLOAT`)**: Values like `inf`, `+inf`, `-inf`, `nan`.
-
-#### **7. Booleans**
-- **Boolean (`BOOLEAN`)**: The literals `true` and `false`.
-
-#### **8. Date-Times**
-- **Date-Time (`DATE_TIME`)**: ISO 8601 date-time formats (RFC 3339).
-
-#### **9. Punctuation and Delimiters**
-- **Left Square Bracket (`LBRACKET`)**: `[`
-- **Right Square Bracket (`RBRACKET`)**: `]`
-- **Double Left Square Bracket (`DOUBLE_LBRACKET`)**: `[[`
-- **Double Right Square Bracket (`DOUBLE_RBRACKET`)**: `]]`
-- **Left Curly Brace (`LBRACE`)**: `{`
-- **Right Curly Brace (`RBRACE`)**: `}`
-- **Comma (`COMMA`)**: `,`
-- **Dot (`DOT`)**: `.` (for dotted keys).
-- **Key-Value Separator (`EQUALS`)**: `=`
-
-#### **10. Operators**
-- **Plus (`PLUS`)**: `+` (used in numbers and date-times).
-- **Minus (`MINUS`)**: `-` (used in numbers and date-times).
-- **Underscore (`UNDERSCORE`)**: `_` (digit separator in numbers).
-
-#### **11. Escape Sequences**
-- **Escape Character (`ESCAPE`)**: `\` (for escape sequences in basic strings).
-
-#### **12. Array and Inline Table Elements**
-- **Array Delimiters**:
-  - **Left Square Bracket (`LBRACKET`)**: `[`
-  - **Right Square Bracket (`RBRACKET`)**: `]`
-  
-- **Inline Table Delimiters**:
-  - **Left Curly Brace (`LBRACE`)**: `{`
-  - **Right Curly Brace (`RBRACE`)**: `}`
-
-- **Value Separator (`COMMA`)**: `,` (for separating values in arrays and inline tables).
-
----
-
-### **Additional Considerations**
-- Handle **whitespace** appropriately: skip or tokenize depending on whether it's significant.
-- Consider **contextual tokens**: some characters like `-` and `.` may have different meanings depending on context (numbers, date-times, keys).
-
----
-
-This should give you a comprehensive list of tokens to lex as part of your TOML lexer development.
+```
+toml
+├── expression
+│   ├── ws [comment]
+│   ├── ws keyval ws [comment]
+│   └── ws table ws [comment]
+├── ws
+│   └── *wschar        # ( [\x20\x09]* )
+├── newline
+│   ├── LF (\x0A)
+│   └── CRLF (\x0D\x0A)
+├── comment
+│   ├── comment-start-symbol (#)
+│   └── *allowed-comment-char  # ( [\x01-\x09\x0E-\x7F\x80-\uD7FF\uE000-\U0010FFFF]* )
+├── keyval
+│   ├── key
+│   │   ├── simple-key
+│   │   │   ├── quoted-key      # ( basic-string | literal-string )
+│   │   │   └── unquoted-key    # ( [unquoted-key-char]+ )
+│   │   └── dotted-key          # ( simple-key ( dot-sep simple-key )+ )
+│   ├── keyval-sep (=)          # ( \s*=\s* )
+│   └── val
+│       ├── string
+│       │   ├── ml-basic-string
+│       │   ├── basic-string
+│       │   ├── ml-literal-string
+│       │   └── literal-string
+│       ├── boolean             # ( true | false )
+│       ├── array
+│       ├── inline-table
+│       ├── date-time
+│       ├── float
+│       └── integer
+├── table
+│   ├── std-table
+│   │   ├── std-table-open ([)
+│   │   ├── key
+│   │   └── std-table-close (])
+│   └── array-table
+│       ├── array-table-open ([[)
+│       ├── key
+│       └── array-table-close (]])
+├── string
+│   ├── ml-basic-string
+│   │   ├── ml-basic-string-delim (""")
+│   │   ├── [newline] ml-basic-body
+│   │   └── ml-basic-string-delim (""")
+│   ├── basic-string
+│   │   ├── quotation-mark (")
+│   │   ├── *basic-char
+│   │   └── quotation-mark (")
+│   ├── ml-literal-string
+│   │   ├── ml-literal-string-delim (''')
+│   │   ├── [newline] ml-literal-body
+│   │   └── ml-literal-string-delim (''')
+│   └── literal-string
+│       ├── apostrophe (')
+│       ├── *literal-char
+│       └── apostrophe (')
+├── integer
+│   ├── dec-int         # ( [+-]?unsigned-dec-int )
+│   ├── hex-int         # ( 0x[0-9A-Fa-f_]+ )
+│   ├── oct-int         # ( 0o[0-7_]+ )
+│   └── bin-int         # ( 0b[01_]+ )
+├── float
+│   ├── float-int-part
+│   │   └── dec-int
+│   ├── frac
+│   │   └── decimal-point zero-prefixable-int
+│   ├── [exp]
+│   └── special-float   # ( [+-]?(inf|nan) )
+├── boolean
+│   ├── true            # ( true )
+│   └── false           # ( false )
+├── date-time
+│   ├── offset-date-time
+│   ├── local-date-time
+│   ├── local-date
+│   └── local-time
+├── array
+│   ├── array-open ([)
+│   ├── [array-values]
+│   ├── ws-comment-newline
+│   └── array-close (])
+└── inline-table
+    ├── inline-table-open ({)
+    ├── [inline-table-keyvals]
+    ├── ws-comment-newline
+    └── inline-table-close (})
+```

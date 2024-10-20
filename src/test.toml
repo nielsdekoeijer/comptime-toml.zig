@@ -1,66 +1,7 @@
 # Test TOML File
-
 # Simple key-value pairs
+money = 100             # Integer
+poney = 100             
 title = "TOML Example"  # String (Basic)
 version = 1.0           # Float
 enabled = true          # Boolean
-count = 1000_000        # Integer with underscores
-negative = -42          # Negative Integer
-positive = +10          # Positive Integer
-hex_value = 0xDEADBEEF  # Hexadecimal Integer
-oct_value = 0o755       # Octal Integer
-bin_value = 0b1101      # Binary Integer
-
-# Multiline basic string
-description = """
-This is a
-multiline basic string
-"""
-
-# Literal string (no escape sequences allowed)
-path = 'C:\Users\John'
-
-# Multiline literal string
-quote = '''
-This is a multiline
-literal string without escapes.
-'''
-
-# Array of simple values
-values = [1, 2, 3, 4, 5]
-
-# Array of mixed types
-mixed_array = [1, "two", true, 3.14, [nested, array]]
-
-# Inline table
-user = { name = "John Doe", age = 29, admin = false }
-
-# Standard table
-[owner]
-name = "John Doe"
-dob = 1979-05-27T07:32:00Z  # Date-Time (RFC 3339)
-
-# Nested table using dotted keys
-[server.config]
-ip = "192.168.1.1"
-port = 8080
-
-# Array of tables
-[[fruits]]
-name = "apple"
-color = "red"
-
-[[fruits]]
-name = "banana"
-color = "yellow"
-
-# Complex number tests
-special_numbers = [inf, +inf, -inf, nan]
-
-# Array of arrays
-array_of_arrays = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-# Local date, time, and offset date-time
-local_date = 2023-10-18
-local_time = 14:05:59
-offset_datetime = 2024-10-18T15:03:00-05:00
