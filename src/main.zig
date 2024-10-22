@@ -3,6 +3,8 @@ const toml = @import("root.zig");
 const utils = @import("utils.zig");
 
 pub fn main() !void {
+    toml.run();
+
     const Config: type = toml.Read(@embedFile("test.toml"));
     const config: Config = Config{};
 

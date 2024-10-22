@@ -5,3 +5,4 @@ poney = 100
 title = "TOML Example"  # String (Basic)
 version = 1.0           # Float
 enabled = true          # Boolean
+pete = true
