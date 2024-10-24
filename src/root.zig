@@ -27,25 +27,68 @@ pub fn Read(comptime file: []const u8) type {
 pub fn TOMLFixture(comptime name: anytype) type {
     comptime {
         return struct {
+            const toml = Read(@embedFile("tests/" ++ name ++ ".toml")) {};
+            const json = @embedFile("tests/" ++ name ++ ".json");
+
+            fn asObjectMap(value: std.json.Value) std.json.ParseError(std.json.Scanner)!std.json.ObjectMap {
+                switch(value) {
+                    std.json.Value.object => |inner| {
+                        return inner;
+                    },
+                    else => {
+                        return error.UnexpectedToken;
+                    }
+                }
+            }
+
+            fn run() void {
+                // parse object map from json
+                const parsed = std.json.parseFromSlice(std.json.Value, std.testing.allocator, json, .{}) catch unreachable;
+                const map: std.json.ObjectMap = asObjectMap(parsed.value) catch unreachable;
+                parsed.deinit();
+
+                _ = map;
+            }
+
             test "fixture" {
-                // try std.testing.expect(std.mem.eql(u8, name, "needle"));
-                const TOML: type = Read(@embedFile("tests/" ++ name ++ ".toml"));
-                const toml = TOML {};
+                run();
 
-                const json = @embedFile("tests/" ++ name ++ ".json");
-                const gpa = std.heap.page_allocator;
-                var arena = std.heap.ArenaAllocator.init(gpa);
-                var out = std.ArrayList(u8).init(arena.allocator());
-                std.json.stringify(toml, .{}, out.writer()) catch |err| {
-                    std.debug.print("{any}", .{err});
-                };
-
-                std.debug.print("======================\n", .{});
-                std.debug.print("Got TOML:\n{s}\n", .{@embedFile("tests/" ++ name ++ ".toml")});
-                std.debug.print("Got JSON:\n{s}\n", .{json});
-                std.debug.print("Parsed:\n{s}\n", .{out.items});
-                std.debug.print("\n", .{});
-                // try std.testing.expect(std.mem.eql(u8, json, toml));
+                // const parsed = try std.json.parseFromSlice(std.json.Value, std.testing.allocator, json, .{});
+                // defer parsed.deinit();
+                // std.debug.print("======================\n", .{});
+                // std.debug.print("Got TOML:\n{s}\n", .{@embedFile("tests/" ++ name ++ ".toml")});
+                // std.debug.print("Got JSON:\n{s}\n", .{json});
+                // switch (parsed.value) {
+                //     std.json.Value.object => |inner| {
+                //         for (inner.keys()) |key| {
+                //             std.debug.print("{s}\n", .{key});
+                //             const entry = inner.get(key).?;
+                //             switch (entry) {
+                //                 std.json.Value.object => |object| {
+                //                     const val = object.get("value").?.string;
+                //                     // case bool
+                //                     if (std.mem.eql(u8, object.get("type").?.string, "bool")) {
+                //                         if (std.mem.eql(u8, val, "true")) {
+                //                             try std.testing.expect(@field(toml, key) == true);
+                //                         }
+                //                         else if (std.mem.eql(u8, val, "false")) {
+                //                             try std.testing.expect(@field(toml, key) == false);
+                //                         }
+                //                         else {
+                //                             unreachable;
+                //                         }
+                //                     }
+                //                 },
+                //                 else => {
+                //                     unreachable;
+                //                 },
+                //             }
+                //         }
+                //     },
+                //     else => {
+                //         unreachable;
+                //     },
+                // }
             }
         };
     }
