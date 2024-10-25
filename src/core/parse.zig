@@ -9,10 +9,12 @@ fn isValidKey(comptime tok: lex.Grammer) bool {
 fn tryParseBoolean(comptime tokens: []const lex.Token) ?bool {
     if (tokens[0].content) |value| {
         if (utils.comptimeMatch(u8, value, "false")) {
+            utils.comptimeLog("parsing as bool 'false'", .{});
             return false;
         }
 
         if (utils.comptimeMatch(u8, value, "true")) {
+            utils.comptimeLog("parsing as bool 'true'", .{});
             return true;
         }
     }
@@ -41,7 +43,6 @@ fn tryParseInteger(comptime tokens: []const lex.Token) ?i32 {
             return null;
         }
 
-        utils.comptimeLog("{s}", .{value});
         @setEvalBranchQuota(10000);
         return std.fmt.parseInt(i32, value, 10) catch {
             @compileError("failed to parse int");
