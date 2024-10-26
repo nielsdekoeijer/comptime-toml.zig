@@ -32,27 +32,236 @@ fn errorRead(comptime file: []const u8) TOMLError!type {
     }
 }
 
-test "test.valid.array.array" {}
-test "test.valid.array.array-subtables" {}
-test "test.valid.array.bool" {}
-test "test.valid.array.empty" {}
-test "test.valid.array.hetergeneous" {}
-test "test.valid.array.mixed-int-array" {}
-test "test.valid.array.mixed-int-float" {}
-test "test.valid.array.mixed-int-string" {}
-test "test.valid.array.mixed-string-table" {}
-test "test.valid.array.nested" {}
-test "test.valid.array.nested-double" {}
-test "test.valid.array.nested-inline-table" {}
-test "test.valid.array.nospaces" {}
-test "test.valid.array.open-parent-table" {}
-test "test.valid.array.string-quote-comma" {}
-test "test.valid.array.string-quote-comma-2" {}
-test "test.valid.array.string-with-comma" {}
-test "test.valid.array.string-with-comma-2" {}
-test "test.valid.array.strings" {}
-test "test.valid.array.table-array-string-backslash" {}
-test "test.valid.array.trailing-comma" {}
+test "test.valid.array.array" {
+    // see: test/valid/array/array.json
+    if (errorRead(@embedFile("test/valid/array/array.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.array-subtables" {
+    // see: test/valid/array/array-subtables.json
+    if (errorRead(@embedFile("test/valid/array/array-subtables.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.bool" {
+    // see: test/valid/array/bool.json
+    if (errorRead(@embedFile("test/valid/array/bool.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.empty" {
+    // see: test/valid/array/empty.json
+    if (errorRead(@embedFile("test/valid/array/empty.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.hetergeneous" {
+    // see: test/valid/array/hetergeneous.json
+    if (errorRead(@embedFile("test/valid/array/hetergeneous.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.mixed-int-array" {
+    // see: test/valid/array/mixed-int-array.json
+    if (errorRead(@embedFile("test/valid/array/mixed-int-array.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.mixed-int-float" {
+    // see: test/valid/array/mixed-int-float.json
+    if (errorRead(@embedFile("test/valid/array/mixed-int-float.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.mixed-int-string" {
+    // see: test/valid/array/mixed-int-string.json
+    if (errorRead(@embedFile("test/valid/array/mixed-int-string.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.mixed-string-table" {
+    // see: test/valid/array/mixed-string-table.json
+    if (errorRead(@embedFile("test/valid/array/mixed-string-table.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.nested" {
+    // see: test/valid/array/nested.json
+    if (errorRead(@embedFile("test/valid/array/nested.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.nested-double" {
+    // see: test/valid/array/nested-double.json
+    if (errorRead(@embedFile("test/valid/array/nested-double.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.nested-inline-table" {
+    // see: test/valid/array/nested-inline-table.json
+    if (errorRead(@embedFile("test/valid/array/nested-inline-table.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.nospaces" {
+    // see: test/valid/array/nospaces.json
+    if (errorRead(@embedFile("test/valid/array/nospaces.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.open-parent-table" {
+    // see: test/valid/array/open-parent-table.json
+    if (errorRead(@embedFile("test/valid/array/open-parent-table.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.string-quote-comma" {
+    // see: test/valid/array/string-quote-comma.json
+    if (errorRead(@embedFile("test/valid/array/string-quote-comma.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.string-quote-comma-2" {
+    // see: test/valid/array/string-quote-comma-2.json
+    if (errorRead(@embedFile("test/valid/array/string-quote-comma-2.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.string-with-comma" {
+    // see: test/valid/array/string-with-comma.json
+    if (errorRead(@embedFile("test/valid/array/string-with-comma.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.string-with-comma-2" {
+    // see: test/valid/array/string-with-comma-2.json
+    if (errorRead(@embedFile("test/valid/array/string-with-comma-2.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.strings" {
+    // see: test/valid/array/strings.json
+    if (errorRead(@embedFile("test/valid/array/strings.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.table-array-string-backslash" {
+    // see: test/valid/array/table-array-string-backslash.json
+    if (errorRead(@embedFile("test/valid/array/table-array-string-backslash.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.array.trailing-comma" {
+    // see: test/valid/array/trailing-comma.json
+    if (errorRead(@embedFile("test/valid/array/trailing-comma.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
 
 test "test.valid.bool.bool" {
     // see: test/valid/bool/bool.json
@@ -85,6 +294,7 @@ test "test.valid.comment.at-eof" {
         // TODO
         const toml = TOML {};
         _ = toml;
+        // try std.testing.expect(std.mem.eql(u8, toml.key, "value"));
     } else |err| {
         return err;
     }
@@ -1135,69 +1345,699 @@ test "test.valid.spec.keys-5" {
         return err;
     }
 }
-test "test.valid.spec.keys-6" {}
-test "test.valid.spec.keys-7" {}
-test "test.valid.spec.local-date-0" {}
-test "test.valid.spec.local-date-time-0" {}
-test "test.valid.spec.local-time-0" {}
-test "test.valid.spec.offset-date-time-0" {}
-test "test.valid.spec.offset-date-time-1" {}
-test "test.valid.spec.string-0" {}
-test "test.valid.spec.string-1" {}
-test "test.valid.spec.string-2" {}
-test "test.valid.spec.string-3" {}
-test "test.valid.spec.string-4" {}
-test "test.valid.spec.string-5" {}
-test "test.valid.spec.string-6" {}
-test "test.valid.spec.string-7" {}
-test "test.valid.spec.table-0" {}
-test "test.valid.spec.table-1" {}
-test "test.valid.spec.table-2" {}
-test "test.valid.spec.table-3" {}
-test "test.valid.spec.table-4" {}
-test "test.valid.spec.table-5" {}
-test "test.valid.spec.table-6" {}
-test "test.valid.spec.table-7" {}
-test "test.valid.spec.table-8" {}
-test "test.valid.spec.table-9" {}
-test "test.valid.string.double-quote-escape" {}
-test "test.valid.string.empty" {}
-test "test.valid.string.ends-in-whitespace-escape" {}
-test "test.valid.string.escape-tricky" {}
-test "test.valid.string.escaped-escape" {}
-test "test.valid.string.escapes" {}
-test "test.valid.string.multiline" {}
-test "test.valid.string.multiline-empty" {}
-test "test.valid.string.multiline-escaped-crlf" {}
-test "test.valid.string.multiline-quotes" {}
-test "test.valid.string.nl" {}
-test "test.valid.string.quoted-unicode" {}
-test "test.valid.string.raw" {}
-test "test.valid.string.raw-multiline" {}
-test "test.valid.string.simple" {}
-test "test.valid.string.start-mb" {}
-test "test.valid.string.unicode-escape" {}
-test "test.valid.string.unicode-literal" {}
-test "test.valid.string.with-pound" {}
-test "test.valid.table.array-implicit" {}
-test "test.valid.table.array-implicit-and-explicit-after" {}
-test "test.valid.table.array-many" {}
-test "test.valid.table.array-nest" {}
-test "test.valid.table.array-one" {}
-test "test.valid.table.array-table-array" {}
-test "test.valid.table.array-within-dotted" {}
-test "test.valid.table.empty" {}
-test "test.valid.table.empty-name" {}
-test "test.valid.table.keyword" {}
-test "test.valid.table.names" {}
-test "test.valid.table.no-eol" {}
-test "test.valid.table.sub" {}
-test "test.valid.table.sub-empty" {}
-test "test.valid.table.whitespace" {}
-test "test.valid.table.with-literal-string" {}
-test "test.valid.table.with-pound" {}
-test "test.valid.table.with-single-quotes" {}
-test "test.valid.table.without-super" {}
+
+test "test.valid.spec.keys-6" {
+    // see: test/valid/spec/keys-6.json
+    if (errorRead(@embedFile("test/valid/spec/keys-6.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.keys-7" {
+    // see: test/valid/spec/keys-7.json
+    if (errorRead(@embedFile("test/valid/spec/keys-7.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.local-date-0" {
+    // see: test/valid/spec/local-date-0.json
+    if (errorRead(@embedFile("test/valid/spec/local-date-0.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.local-date-time-0" {
+    // see: test/valid/spec/local-date-time-0.json
+    if (errorRead(@embedFile("test/valid/spec/local-date-time-0.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.local-time-0" {
+    // see: test/valid/spec/local-time-0.json
+    if (errorRead(@embedFile("test/valid/spec/local-time-0.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.offset-date-time-0" {
+    // see: test/valid/spec/offset-date-time-0.json
+    if (errorRead(@embedFile("test/valid/spec/offset-date-time-0.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.offset-date-time-1" {
+    // see: test/valid/spec/offset-date-time-1.json
+    if (errorRead(@embedFile("test/valid/spec/offset-date-time-1.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-0" {
+    // see: test/valid/spec/string-0.json
+    if (errorRead(@embedFile("test/valid/spec/string-0.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-1" {
+    // see: test/valid/spec/string-1.json
+    if (errorRead(@embedFile("test/valid/spec/string-1.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-2" {
+    // see: test/valid/spec/string-2.json
+    if (errorRead(@embedFile("test/valid/spec/string-2.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-3" {
+    // see: test/valid/spec/string-3.json
+    if (errorRead(@embedFile("test/valid/spec/string-3.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-4" {
+    // see: test/valid/spec/string-4.json
+    if (errorRead(@embedFile("test/valid/spec/string-4.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-5" {
+    // see: test/valid/spec/string-5.json
+    if (errorRead(@embedFile("test/valid/spec/string-5.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-6" {
+    // see: test/valid/spec/string-6.json
+    if (errorRead(@embedFile("test/valid/spec/string-6.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.string-7" {
+    // see: test/valid/spec/string-7.json
+    if (errorRead(@embedFile("test/valid/spec/string-7.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-0" {
+    // see: test/valid/spec/table-0.json
+    if (errorRead(@embedFile("test/valid/spec/table-0.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-1" {
+    // see: test/valid/spec/table-1.json
+    if (errorRead(@embedFile("test/valid/spec/table-1.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-2" {
+    // see: test/valid/spec/table-2.json
+    if (errorRead(@embedFile("test/valid/spec/table-2.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-3" {
+    // see: test/valid/spec/table-3.json
+    if (errorRead(@embedFile("test/valid/spec/table-3.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-4" {
+    // see: test/valid/spec/table-4.json
+    if (errorRead(@embedFile("test/valid/spec/table-4.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-5" {
+    // see: test/valid/spec/table-5.json
+    if (errorRead(@embedFile("test/valid/spec/table-5.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-6" {
+    // see: test/valid/spec/table-6.json
+    if (errorRead(@embedFile("test/valid/spec/table-6.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-7" {
+    // see: test/valid/spec/table-7.json
+    if (errorRead(@embedFile("test/valid/spec/table-7.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-8" {
+    // see: test/valid/spec/table-8.json
+    if (errorRead(@embedFile("test/valid/spec/table-8.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.spec.table-9" {
+    // see: test/valid/spec/table-9.json
+    if (errorRead(@embedFile("test/valid/spec/table-9.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.double-quote-escape" {
+    // see: test/valid/string/double-quote-escape.json
+    if (errorRead(@embedFile("test/valid/string/double-quote-escape.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.empty" {
+    // see: test/valid/string/empty.json
+    if (errorRead(@embedFile("test/valid/string/empty.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.ends-in-whitespace-escape" {
+    // see: test/valid/string/ends-in-whitespace-escape.json
+    if (errorRead(@embedFile("test/valid/string/ends-in-whitespace-escape.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.escape-tricky" {
+    // see: test/valid/string/escape-tricky.json
+    if (errorRead(@embedFile("test/valid/string/escape-tricky.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.escaped-escape" {
+    // see: test/valid/string/escaped-escape.json
+    if (errorRead(@embedFile("test/valid/string/escaped-escape.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.escapes" {
+    // see: test/valid/string/escapes.json
+    if (errorRead(@embedFile("test/valid/string/escapes.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.multiline" {
+    // see: test/valid/string/multiline.json
+    if (errorRead(@embedFile("test/valid/string/multiline.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.multiline-empty" {
+    // see: test/valid/string/multiline-empty.json
+    if (errorRead(@embedFile("test/valid/string/multiline-empty.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.multiline-escaped-crlf" {
+    // see: test/valid/string/multiline-escaped-crlf.json
+    if (errorRead(@embedFile("test/valid/string/multiline-escaped-crlf.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.multiline-quotes" {
+    // see: test/valid/string/multiline-quotes.json
+    if (errorRead(@embedFile("test/valid/string/multiline-quotes.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.nl" {
+    // see: test/valid/string/nl.json
+    if (errorRead(@embedFile("test/valid/string/nl.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.quoted-unicode" {
+    // see: test/valid/string/quoted-unicode.json
+    if (errorRead(@embedFile("test/valid/string/quoted-unicode.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.raw" {
+    // see: test/valid/string/raw.json
+    if (errorRead(@embedFile("test/valid/string/raw.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.raw-multiline" {
+    // see: test/valid/string/raw-multiline.json
+    if (errorRead(@embedFile("test/valid/string/raw-multiline.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.simple" {
+    // see: test/valid/string/simple.json
+    if (errorRead(@embedFile("test/valid/string/simple.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.start-mb" {
+    // see: test/valid/string/start-mb.json
+    if (errorRead(@embedFile("test/valid/string/start-mb.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.unicode-escape" {
+    // see: test/valid/string/unicode-escape.json
+    if (errorRead(@embedFile("test/valid/string/unicode-escape.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.unicode-literal" {
+    // see: test/valid/string/unicode-literal.json
+    if (errorRead(@embedFile("test/valid/string/unicode-literal.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.string.with-pound" {
+    // see: test/valid/string/with-pound.json
+    if (errorRead(@embedFile("test/valid/string/with-pound.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-implicit" {
+    // see: test/valid/table/array-implicit.json
+    if (errorRead(@embedFile("test/valid/table/array-implicit.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-implicit-and-explicit-after" {
+    // see: test/valid/table/array-implicit-and-explicit-after.json
+    if (errorRead(@embedFile("test/valid/table/array-implicit-and-explicit-after.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-many" {
+    // see: test/valid/table/array-many.json
+    if (errorRead(@embedFile("test/valid/table/array-many.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-nest" {
+    // see: test/valid/table/array-nest.json
+    if (errorRead(@embedFile("test/valid/table/array-nest.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-one" {
+    // see: test/valid/table/array-one.json
+    if (errorRead(@embedFile("test/valid/table/array-one.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-table-array" {
+    // see: test/valid/table/array-table-array.json
+    if (errorRead(@embedFile("test/valid/table/array-table-array.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.array-within-dotted" {
+    // see: test/valid/table/array-within-dotted.json
+    if (errorRead(@embedFile("test/valid/table/array-within-dotted.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.empty" {
+    // see: test/valid/table/empty.json
+    if (errorRead(@embedFile("test/valid/table/empty.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.empty-name" {
+    // see: test/valid/table/empty-name.json
+    if (errorRead(@embedFile("test/valid/table/empty-name.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.keyword" {
+    // see: test/valid/table/keyword.json
+    if (errorRead(@embedFile("test/valid/table/keyword.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.names" {
+    // see: test/valid/table/names.json
+    if (errorRead(@embedFile("test/valid/table/names.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.no-eol" {
+    // see: test/valid/table/no-eol.json
+    if (errorRead(@embedFile("test/valid/table/no-eol.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.sub" {
+    // see: test/valid/table/sub.json
+    if (errorRead(@embedFile("test/valid/table/sub.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.sub-empty" {
+    // see: test/valid/table/sub-empty.json
+    if (errorRead(@embedFile("test/valid/table/sub-empty.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.whitespace" {
+    // see: test/valid/table/whitespace.json
+    if (errorRead(@embedFile("test/valid/table/whitespace.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.with-literal-string" {
+    // see: test/valid/table/with-literal-string.json
+    if (errorRead(@embedFile("test/valid/table/with-literal-string.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.with-pound" {
+    // see: test/valid/table/with-pound.json
+    if (errorRead(@embedFile("test/valid/table/with-pound.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.with-single-quotes" {
+    // see: test/valid/table/with-single-quotes.json
+    if (errorRead(@embedFile("test/valid/table/with-single-quotes.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
+
+test "test.valid.table.without-super" {
+    // see: test/valid/table/without-super.json
+    if (errorRead(@embedFile("test/valid/table/without-super.toml"))) |TOML| {
+        // TODO
+        const toml = TOML {};
+        _ = toml;
+    } else |err| {
+        return err;
+    }
+}
 
 inline fn shouldError(comptime file: []const u8) TOMLError!void {
     comptime {
