@@ -1,5 +1,6 @@
 const std = @import("std");
 const utils = @import("utils.zig");
+const TOMLError = @import("error.zig").TOMLError;
 
 pub const Token = struct { token: Grammer, content: ?[]const u8 };
 
@@ -23,7 +24,7 @@ pub const Grammer = enum {
     Remainder,
 };
 
-pub fn lex(comptime input: []const u8) []const Token {
+pub fn lex(comptime input: []const u8) TOMLError![]const Token {
     comptime {
         var i: usize = 0;
         var j: usize = 0;
@@ -59,8 +60,12 @@ pub fn lex(comptime input: []const u8) []const Token {
                 }
 
                 var k = i;
-                while (input[k] != char) {
+                while (k < input.len and input[k] != char) {
                     k += 1;
+                }
+
+                if (k >= input.len) {
+                    return TOMLError.UnexpectedToken;
                 }
 
                 tokens[j] = Token{
@@ -90,7 +95,7 @@ pub fn lex(comptime input: []const u8) []const Token {
                     if (index) |idx| {
                         i += idx;
                     } else {
-                        @compileError("unterminated comment");
+                        return TOMLError.UnexpectedToken;
                     }
 
                     tokens[j] = Token{

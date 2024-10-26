@@ -1,6 +1,7 @@
 const std = @import("std");
 const utils = @import("utils.zig");
 const lex = @import("lex.zig");
+const TOMLError = @import("error.zig").TOMLError;
 
 fn isValidKey(comptime tok: lex.Grammer) bool {
     return tok != lex.Grammer.QuotedString and tok != lex.Grammer.UnquotedString;
@@ -45,32 +46,32 @@ fn tryParseInteger(comptime tokens: []const lex.Token) ?i32 {
 
         @setEvalBranchQuota(10000);
         return std.fmt.parseInt(i32, value, 10) catch {
-            @compileError("failed to parse int");
+            return null;
         };
     }
 
     return null;
 }
 
-fn parseKeyValue(comptime tokens: []const lex.Token) std.builtin.Type.StructField {
+fn parseKeyValue(comptime tokens: []const lex.Token) TOMLError!std.builtin.Type.StructField {
     // grab name
     var name: [:0]const u8 = undefined;
 
     // ensure correct token type
     if (isValidKey(tokens[0].token)) {
-        @compileError("expected QuotedString or UnquotedString token");
+        return TOMLError.UnexpectedToken;
     }
 
     // check if content present
     if (tokens[0].content) |val| {
         name = utils.comptimeNullTerminate(val);
     } else {
-        @compileError("expected content to be present");
+        return TOMLError.UnexpectedToken;
     }
 
     // ensure separator
     if (tokens[1].token != lex.Grammer.Equals) {
-        @compileError("expected Equals token");
+        return TOMLError.UnexpectedToken;
     }
 
     // parse type
@@ -121,7 +122,7 @@ fn TokensEqualsPredicate(comptime A: lex.Grammer) type {
     };
 }
 
-pub fn Parse(comptime tokens: []const lex.Token) type {
+pub fn parse(comptime tokens: []const lex.Token) TOMLError!type {
     comptime {
         var i: usize = 0;
         var j: usize = 0;
@@ -132,7 +133,15 @@ pub fn Parse(comptime tokens: []const lex.Token) type {
 
             switch (token.token) {
                 lex.Grammer.QuotedString, lex.Grammer.UnquotedString => {
-                    fields[j] = parseKeyValue(tokens[i..]);
+                    const candidate = try parseKeyValue(tokens[i..]);
+
+                    for (0..j) |k| {
+                        if (std.mem.eql(u8, fields[k].name, candidate.name)) {
+                            return TOMLError.UnexpectedToken;
+                        }
+                    }
+
+                    fields[j] = candidate;
                     j += 1;
 
                     const offset = utils.comptimeFind(
@@ -144,7 +153,7 @@ pub fn Parse(comptime tokens: []const lex.Token) type {
                     if (offset) |val| {
                         i += val;
                     } else {
-                        @compileError("expected NewLine token following key-value pair");
+                        return TOMLError.UnexpectedToken;
                     }
                 },
                 else => {},
